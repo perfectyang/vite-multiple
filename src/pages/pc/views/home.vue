@@ -1,20 +1,22 @@
 <template>
-   <el-pagination
+   <!-- <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       v-model:currentPage="page"
       :page-size="100"
       layout="total, prev, pager, next"
       :total="1000">
-    </el-pagination>
+    </el-pagination> -->
+    <el-tag type="success">标签二</el-tag>
 </template>
 
 <script>
 import {ref} from 'vue'
-import {ElPagination} from 'element-plus'
+import {ElTag} from 'element-plus'
 export default {
   components: {
-    ElPagination
+    // ElPagination,
+    ElTag
   },
   setup () {
     const page = ref(1)

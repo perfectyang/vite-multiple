@@ -1,35 +1,92 @@
+/*
+ * @Descripttion: 自己用的一版请求
+ * @Author: perfectyang
+ * @Date: 2019-09-05 17:36:12
+ * @LastEditors: perfectyang
+ * @LastEditTime: 2019-09-06 10:36:54
+ */
 import axios from 'axios'
-import { ElMessage } from 'element-plus'
-import router from '@/router/index'
-import { localGet } from './index'
-import config from '~/config'
+import qs from 'qs'
+import isObject from 'lodash/isObject'
+import Vue from 'vue'
+import { getQueryString } from 'Lib/utils'
+// import CancelToken from './cancel-token'
+window._axiosPromiseArr = []
 
-
-// 这边由于后端没有区分测试和正式，姑且都写成一个接口。
-axios.defaults.baseURL = config[import.meta.env.MODE].baseUrl
-// 携带 cookie，对目前的项目没有什么作用，因为我们是 token 鉴权
-axios.defaults.withCredentials = true
-// 请求头，headers 信息
-axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
-axios.defaults.headers['token'] = localGet('token') || ''
-// 默认 post 请求，使用 application/json 形式
-axios.defaults.headers.post['Content-Type'] = 'application/json'
-
-// 请求拦截器，内部根据返回值，重新组装，统一管理。
-axios.interceptors.response.use(res => {
-  if (typeof res.data !== 'object') {
-    ElMessage.error('服务端异常！')
-    return Promise.reject(res)
+const fetch = axios.create({
+  baseURL: '/'
+  // timeout: 20000,
+  // withCredentials: true
+})
+const config = Object.assign({
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
   }
-  if (res.data.resultCode != 200) {
-    if (res.data.message) ElMessage.error(res.data.message)
-    if (res.data.resultCode == 419) {
-      router.push({ path: '/login' })
+})
+fetch.interceptors.request.use(config => {
+  const tokenId = JSON.parse(window.sessionStorage.getItem('user') || '{}').token_id || getQueryString('token_id') || ''
+  if (Object.prototype.toString.call(config.data) === '[object FormData]') {
+    config.headers['Content-Type'] = 'multipart/form-data'
+    config.data.append('token_id', tokenId)
+  } else if (config.data) {
+    Object.keys(config.data).forEach(key => {
+      if (isObject(config.data[key])) {
+        config.data[key] = JSON.stringify(config.data[key])
+      }
+    })
+    config.data.token_id = tokenId
+    const isObserver = location.href.includes('observer')
+    if (isObserver) {
+      config.data.lang = getQueryString('lang')
     }
-    return Promise.reject(res.data)
+    config.data = qs.stringify(config.data)
+  } else {
+    config.data = qs.stringify({})
   }
+  config.cancelToken = new axios.CancelToken(cancel => {
+    window._axiosPromiseArr.push({cancel})
+  })
 
-  return res.data.data
+  return config
+}, (error) => {
+  return Promise.reject(error)
+})
+fetch.interceptors.response.use(response => {
+  return response
+}, (error) => {
+  let config = error.config
+  let data = {}
+
+  for (let [key, value] of config.data) {
+    data[key] = value
+  }
+  if (!axios.isCancel(error)) {
+     /* eslint-disable no-new */
+    return Promise.reject(error)
+  } else {
+    return new Promise(() => {})
+  }
 })
 
-export default axios
+const handlResult = (res, callback) => {
+  if (/^([-1-9]\d*)$/.test(+res.data.code)) {
+     /* eslint-disable no-new */
+    callback(null)
+  } else {
+    callback(res.data)
+  }
+}
+
+function post (url, params) {
+  return new Promise((resolve, reject) => {
+    fetch.post(url, params, config).then(response => {
+      handlResult(response, resolve)
+    }).catch(err => {
+      resolve(null, err)
+    })
+  })
+}
+
+export default {
+  post
+}

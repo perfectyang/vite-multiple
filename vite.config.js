@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import styleImport from "vite-plugin-style-import";
-// import vitePluginImport from 'vite-plugin-babel-import';
+import vitePluginImport from 'vite-plugin-babel-import';
 import path from 'path'
 
 import mpa from 'vite-plugin-mpa'
@@ -12,6 +12,34 @@ const baseUrl = {
 }
 const mpConfig = mpa({
 })
+
+ function myPlugin() {
+  const virtualFileId = '@my-virtual-file'
+
+  return {
+    name: 'my-plugin', // 必须的，将会显示在 warning 和 error 中
+    resolveId(id) {
+      if (id === virtualFileId) {
+        return virtualFileId
+      }
+    },
+    load(id) {
+      if (id === virtualFileId) {
+        return `export const msg = "from virtual file"`
+      }
+    },
+    transform(src, id) {
+      // console.log('src', src)
+    },
+    transformIndexHtml(html) {
+      console.log(('在这果', html))
+      return html.replace(
+        /<title>(.*?)<\/title>/,
+        `<title>新加在的东要</title>`
+      )
+    }
+  }
+}
 
 export default ({ mode }) =>  defineConfig({
   open: false,
@@ -31,12 +59,23 @@ export default ({ mode }) =>  defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src'),
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.esm-browser.prod.js'
     }
   },
   plugins: [
     vue(),
     mpConfig,
+    myPlugin(),
+    vitePluginImport([
+        {
+            libraryName: 'element-plus',
+            libraryDirectory: 'es',
+            style(name) {
+                return `element-plus/lib/theme-chalk/${name}.css`;
+            }
+        },
+    ]),
     styleImport({
       libs: [
         // 按需加载element-plus
