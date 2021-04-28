@@ -18,19 +18,20 @@ const mpConfig = mpa({
 
   return {
     name: 'my-plugin', // 必须的，将会显示在 warning 和 error 中
-    resolveId(id) {
-      if (id === virtualFileId) {
-        return virtualFileId
-      }
-    },
-    load(id) {
-      if (id === virtualFileId) {
-        return `export const msg = "from virtual file"`
-      }
-    },
-    transform(src, id) {
-      // console.log('src', src)
-    },
+    apply: 'build', // serve
+    // resolveId(id) {
+    //   if (id === virtualFileId) {
+    //     return virtualFileId
+    //   }
+    // },
+    // load(id) {
+    //   if (id === virtualFileId) {
+    //     return `export const msg = "from virtual file"`
+    //   }
+    // },
+    // transform(src, id) {
+    //   // console.log('src', src)
+    // },
     transformIndexHtml(html) {
       console.log(('在这果', html))
       return html.replace(
