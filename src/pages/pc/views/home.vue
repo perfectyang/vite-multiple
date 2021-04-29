@@ -1,26 +1,34 @@
 <template>
-   <!-- <el-pagination
+   <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       v-model:currentPage="page"
       :page-size="100"
       layout="total, prev, pager, next"
       :total="1000">
-    </el-pagination> -->
-    <el-tag type="success">标签二</el-tag>
+    </el-pagination>
+    <!-- <el-tag type="success">标签二</el-tag>
+    <el-date-picker
+      v-model="timerPick"
+      type="date"
+      placeholder="">
+    </el-date-picker> -->
 </template>
 
 <script>
 import {ref} from 'vue'
-import {ElTag} from 'element-plus'
+// ElTag, ElDatePicker
+import {ElPagination, } from 'element-plus'
 export default {
   components: {
-    // ElPagination,
-    ElTag
+    ElPagination,
+    // ElTag,
+    // ElDatePicker
   },
   setup () {
     const page = ref(1)
     const value = ref(0)
+    const timerPick = ref('')
     const handleSizeChange = () => {
 
     }
@@ -31,7 +39,8 @@ export default {
       value,
       page,
       handleSizeChange,
-      handleCurrentChange
+      handleCurrentChange,
+      timerPick
     }
   }
 }

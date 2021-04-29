@@ -1466,9 +1466,9 @@
   "version" "1.3.720"
 
 "element-plus@^1.0.2-beta.33":
-  "integrity" "sha1-MPybFhSWrlh/q4YjXIC3KOpD2Qk="
-  "resolved" "http://npm.kuaizitech.cn/element-plus/-/element-plus-1.0.2-beta.40.tgz"
-  "version" "1.0.2-beta.40"
+  "integrity" "sha1-nCNLU2s0AdBCUFwAPleb1lCB8PA="
+  "resolved" "http://npm.kuaizitech.cn/element-plus/-/element-plus-1.0.2-beta.41.tgz"
+  "version" "1.0.2-beta.41"
   dependencies:
     "@popperjs/core" "^2.4.4"
     "@types/lodash" "^4.14.161"

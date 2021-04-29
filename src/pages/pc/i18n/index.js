@@ -1,7 +1,7 @@
-import { createI18n } from "vue-i18n";
-import ElementLocale from 'element-plus/lib/locale'
-import enLocale from 'element-plus/lib/locale/lang/en'
-import zhLocale from 'element-plus/lib/locale/lang/zh-cn'
+import { createI18n } from 'vue-i18n'
+import enLocale from 'element-plus/es/locale/lang/en'
+import zhLocale from 'element-plus/es/locale/lang/zh-cn'
+import { i18n as elI18n } from 'element-plus/es/locale'
 export const localesConfigs = {
   [enLocale.name]: {
     el: enLocale.el,
@@ -10,10 +10,6 @@ export const localesConfigs = {
   [zhLocale.name]: {
     el: zhLocale.el,
     '首页': '首页'
-  },
-  testLocale: {
-    el: {}
-    // 没有定义 message 字段，会 fallback 回到 en 去.
   }
 }
 export const i18n = createI18n({
@@ -21,7 +17,8 @@ export const i18n = createI18n({
   fallbackLocale: enLocale.name,
   messages: localesConfigs
 })
-ElementLocale.i18n(i18n.global.t)
+
 export function initI18n (app) {
+  elI18n(i18n.global.t)
   app.use(i18n)
 }

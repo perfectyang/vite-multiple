@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import styleImport from "vite-plugin-style-import";
+// import styleImport from "vite-plugin-style-import";
 import vitePluginImport from 'vite-plugin-babel-import';
 import path from 'path'
 
@@ -69,32 +69,32 @@ export default ({ mode }) =>  defineConfig({
     mpConfig,
     myPlugin(),
     vitePluginImport([
-        {
-            libraryName: 'element-plus',
-            libraryDirectory: 'es',
-            style(name) {
-                return `element-plus/lib/theme-chalk/${name}.css`;
-            }
-        },
-    ]),
-    styleImport({
-      libs: [
-        // 按需加载element-plus
-        {
-          libraryName: "element-plus",
-          esModule: true,
-          ensureStyleFile: true,
-          resolveStyle: (name) => {
-            console.log('name22', name)
-            return `element-plus/lib/theme-chalk/${name}.css`;
-          },
-          resolveComponent: (name) => {
-            console.log('name', name)
-            return `element-plus/lib/${name}`;
-          },
-        }
-      ],
-    })
+      {
+          libraryName: 'element-plus',
+          libraryDirectory: 'es',
+          style(name) {
+              return `element-plus/lib/theme-chalk/${name}.css`;
+          }
+      }
+    ])
+    // styleImport({
+    //   libs: [
+    //     // 按需加载element-plus
+    //     {
+    //       libraryName: "element-plus",
+    //       esModule: true,
+    //       ensureStyleFile: true,
+    //       resolveStyle: (name) => {
+    //         console.log('name22', name)
+    //         return `element-plus/lib/theme-chalk/${name}.css`;
+    //       },
+    //       resolveComponent: (name) => {
+    //         console.log('name', name)
+    //         return `element-plus/lib/${name}`;
+    //       },
+    //     }
+    //   ],
+    // })
   ],
   optimizeDeps: {
     include: [
