@@ -30,6 +30,7 @@
     "element-theme-chalk": "^2.15.1",
     "less": "^4.1.1",
     "less-loader": "^8.1.1",
+    "querystring": "^0.2.1",
     "vite": "^2.0.1",
     "vite-babel-plugin": "^0.0.2",
     "vite-plugin-babel-import": "^2.0.2",

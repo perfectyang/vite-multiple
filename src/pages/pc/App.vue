@@ -23,9 +23,3 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-// @import "@/assets/public.less";
-.pc {
-  color: #ff7676;
-}
-</style>

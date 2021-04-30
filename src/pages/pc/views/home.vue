@@ -7,23 +7,30 @@
       layout="total, prev, pager, next"
       :total="1000">
     </el-pagination>
-    <!-- <el-tag type="success">标签二</el-tag>
+    <el-tag type="success">标签二23bb</el-tag>
+    <el-date-picker
+      size="small"
+      v-model="timerPick"
+      type="date"
+      placeholder="">
+    </el-date-picker>
+     <el-button type="primary" size="small">返回</el-button>
+    <el-tag type="success">标签二</el-tag>
     <el-date-picker
       v-model="timerPick"
       type="date"
       placeholder="">
-    </el-date-picker> -->
+    </el-date-picker>
+    <el-progress :percentage="50" status="exception"></el-progress>
+    <test />
 </template>
 
 <script>
 import {ref} from 'vue'
-// ElTag, ElDatePicker
-import {ElPagination, } from 'element-plus'
+import test from './test.vue'
 export default {
   components: {
-    ElPagination,
-    // ElTag,
-    // ElDatePicker
+    test
   },
   setup () {
     const page = ref(1)
@@ -47,5 +54,9 @@ export default {
 </script>
 
 <style lang='less' scoped>
-
+@import './home.less';
+@import './test.less';
+.test {
+  font-size: 14px;
+}
 </style>

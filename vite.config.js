@@ -1,8 +1,8 @@
+import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-// import styleImport from "vite-plugin-style-import";
 import vitePluginImport from 'vite-plugin-babel-import';
-import path from 'path'
+import vitePluginAutoInject from './plugins/vite-plugin-auto-inject/index.js'
 
 import mpa from 'vite-plugin-mpa'
 
@@ -10,38 +10,6 @@ const baseUrl = {
   development: './',
   production: '//www.test.com/'
 }
-const mpConfig = mpa({
-})
-
- function myPlugin() {
-  const virtualFileId = '@my-virtual-file'
-
-  return {
-    name: 'my-plugin', // 必须的，将会显示在 warning 和 error 中
-    apply: 'build', // serve
-    // resolveId(id) {
-    //   if (id === virtualFileId) {
-    //     return virtualFileId
-    //   }
-    // },
-    // load(id) {
-    //   if (id === virtualFileId) {
-    //     return `export const msg = "from virtual file"`
-    //   }
-    // },
-    // transform(src, id) {
-    //   // console.log('src', src)
-    // },
-    transformIndexHtml(html) {
-      console.log(('在这果', html))
-      return html.replace(
-        /<title>(.*?)<\/title>/,
-        `<title>新加在的东要</title>`
-      )
-    }
-  }
-}
-
 export default ({ mode }) =>  defineConfig({
   open: false,
   mode,
@@ -66,8 +34,13 @@ export default ({ mode }) =>  defineConfig({
   },
   plugins: [
     vue(),
-    mpConfig,
-    myPlugin(),
+    mpa({}),
+    vitePluginAutoInject([
+      {
+        libraryName: 'element-plus',
+        elementTagReg: '^el-' // 在template中组件使用的标识匹配规则
+      }
+    ]),
     vitePluginImport([
       {
           libraryName: 'element-plus',
@@ -77,24 +50,6 @@ export default ({ mode }) =>  defineConfig({
           }
       }
     ])
-    // styleImport({
-    //   libs: [
-    //     // 按需加载element-plus
-    //     {
-    //       libraryName: "element-plus",
-    //       esModule: true,
-    //       ensureStyleFile: true,
-    //       resolveStyle: (name) => {
-    //         console.log('name22', name)
-    //         return `element-plus/lib/theme-chalk/${name}.css`;
-    //       },
-    //       resolveComponent: (name) => {
-    //         console.log('name', name)
-    //         return `element-plus/lib/${name}`;
-    //       },
-    //     }
-    //   ],
-    // })
   ],
   optimizeDeps: {
     include: [

@@ -2843,6 +2843,11 @@
   dependencies:
     "side-channel" "^1.0.4"
 
+"querystring@^0.2.1":
+  "integrity" "sha1-QNd2FbsJ0WkCqFw+OKqLXtdhwt0="
+  "resolved" "http://npm.kuaizitech.cn/querystring/-/querystring-0.2.1.tgz"
+  "version" "0.2.1"
+
 "queue-microtask@^1.2.2":
   "integrity" "sha1-SSkii7xyTfrEPg77BYyve2z7YkM="
   "resolved" "http://npm.kuaizitech.cn/queue-microtask/-/queue-microtask-1.2.3.tgz"
