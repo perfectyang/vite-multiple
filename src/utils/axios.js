@@ -8,7 +8,6 @@
 import axios from 'axios'
 import qs from 'qs'
 import isObject from 'lodash/isObject'
-import Vue from 'vue'
 import { getQueryString } from 'Lib/utils'
 // import CancelToken from './cancel-token'
 window._axiosPromiseArr = []
