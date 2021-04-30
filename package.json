@@ -12,9 +12,12 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "vue-cli-service lint",
-      "git add"
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint",
+      "prettier --parser=typescript --write"
     ]
   },
   "dependencies": {
