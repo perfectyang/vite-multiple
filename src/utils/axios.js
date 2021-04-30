@@ -1,10 +1,3 @@
-/*
- * @Descripttion: 自己用的一版请求
- * @Author: perfectyang
- * @Date: 2019-09-05 17:36:12
- * @LastEditors: perfectyang
- * @LastEditTime: 2019-09-06 10:36:54
- */
 import axios from 'axios'
 import qs from 'qs'
 import isObject from 'lodash/isObject'
