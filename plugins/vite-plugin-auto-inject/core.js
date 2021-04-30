@@ -31,7 +31,7 @@ function transformSrcCode (code, options) {
   sourceComp.forEach(cur => {
     cur.names = [...cur.names].map(name => ({key: 'normal', name}))
   })
-  console.log('sourceComp', sourceComp)
+  // console.log('sourceComp', sourceComp)
   if (!sourceComp.length) {
     return code
   }
@@ -47,7 +47,7 @@ function transformSrcCode (code, options) {
   </script>
   ${stylesSource}
   `
-  console.log(tpl)
+  // console.log(tpl)
   return tpl
 }
 

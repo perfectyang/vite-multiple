@@ -13,7 +13,7 @@ import { reactive, computed} from 'vue'
 export default {
   components: {
   },
-  setup() {
+  setup () {
     const state = reactive({
       count: 1
     })

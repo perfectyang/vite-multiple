@@ -3,8 +3,9 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vitePluginImport from 'vite-plugin-babel-import';
 import vitePluginAutoInject from './plugins/vite-plugin-auto-inject/index.js'
-
 import mpa from 'vite-plugin-mpa'
+import viteESLint from '@ehutch79/vite-eslint'
+
 
 const baseUrl = {
   development: './',
@@ -35,6 +36,7 @@ export default ({ mode }) =>  defineConfig({
   plugins: [
     vue(),
     mpa({}),
+    viteESLint(),
     vitePluginAutoInject([
       {
         libraryName: 'element-plus',

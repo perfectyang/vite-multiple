@@ -6,11 +6,7 @@
     "build": "vite build --mode production",
     "serve": "vite preview"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": [
       "eslint --fix"
@@ -23,37 +19,46 @@
   "dependencies": {
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.33",
+    "eslint-import-resolver-alias": "^1.1.2",
     "js-md5": "^0.7.3",
     "pushstate-server": "^3.1.0",
     "qs": "^6.9.6",
     "vite-plugin-mpa": "^0.3.1",
     "vue": "^3.0.5",
+    "vue-i18n": "^9.1.4",
     "vue-router": "^4.0.4",
     "wangeditor": "^4.6.10"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/runtime": "^7.13.8",
+    "@ehutch79/vite-eslint": "^0.0.1",
     "@rollup/plugin-babel": "^5.3.0",
     "@typescript-eslint/parser": "^4.22.0",
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.5",
     "babel": "^6.23.0",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-import": "^1.13.3",
     "element-theme-chalk": "^2.15.1",
     "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-define-config": "^1.0.8",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.9.0",
     "less": "^4.1.1",
     "less-loader": "^8.1.1",
     "lint-staged": "^10.5.4",
     "pre-commit": "^1.2.2",
+    "prettier": "^2.2.1",
     "querystring": "^0.2.1",
     "vite": "^2.0.1",
     "vite-babel-plugin": "^0.0.2",
     "vite-plugin-babel-import": "^2.0.2",
     "vite-plugin-imp": "^2.0.4",
     "vite-plugin-style-import": "^0.10.0",
-    "vue-i18n": "^9.1.4"
+    "vue-eslint-parser": "^7.6.0"
   }
 }

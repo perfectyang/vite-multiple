@@ -12,12 +12,12 @@ export default function vitePluginAutoInject (options) {
           map: null
         }
       }
-    },
-    transform(id) {
-      if (/\.(vue)$/.test(id)) {
-        console.log('中文', id)
-      }
     }
+    // transform(id) {
+    //   if (/\.(vue)$/.test(id)) {
+    //     console.log('中文', id)
+    //   }
+    // }
   }
 }
 

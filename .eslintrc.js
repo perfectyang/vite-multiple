@@ -1,29 +1,51 @@
-const DOMGlobals = ['window', 'document']
-const NodeGlobals = ['module', 'require']
-
-module.exports = {
-  parser: '@typescript-eslint/parser',
+const { defineConfig } = require('eslint-define-config');
+module.exports = defineConfig({
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  parser: 'vue-eslint-parser',
   parserOptions: {
+    ecmaVersion: 2020,
     sourceType: 'module'
   },
+  extends: [
+    'plugin:vue/vue3-strongly-recommended',
+    'airbnb-base'
+  ],
   rules: {
     'no-unused-vars': [
       'error',
-      // we are only using this rule to check for unused arguments since TS
-      // catches unused variables but not args.
-      { varsIgnorePattern: '.*', args: 'none' }
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      },
     ],
-    // most of the codebase are expected to be env agnostic
-    'no-restricted-globals': ['error', ...DOMGlobals, ...NodeGlobals],
-    // since we target ES2015 for baseline support, we need to forbid object
-    // rest spread usage (both assign and destructure)
-    'no-restricted-syntax': [
-      'error',
-      'ObjectExpression > SpreadElement',
-      'ObjectPattern > RestElement'
-    ]
+    quotes: ['error', 'single'],
+    // 'space-before-function-paren': 'off',
+    "space-before-function-paren": ["error", "always"],
+    'vue/attributes-order': 'off',
+    'vue/one-component-per-file': 'off',
+    'vue/html-closing-bracket-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/attribute-hyphenation': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/html-self-closing': 'off',
+    'vue/max-attributes-per-line': 'off',
+    semi: 0,
+    'comma-dangle': 0
   },
-  overrides: [
-    // tests, no restrictions (runs in Node / jest with jsdom)
-  ]
-}
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+            ['@', './src', 'vue-i18n'],
+        ],
+        extensions: ['.js', '.jsx', '.json', '.vue', '.ts']
+      }
+    }
+  },
+});

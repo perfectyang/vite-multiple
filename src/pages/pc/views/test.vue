@@ -1,24 +1,18 @@
 <template>
   <div class="box">testst22</div>
-     <el-tag type="success">里面11111</el-tag>
-     <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="日期4"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名22"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-    </el-table>
+  <el-tag type="success">里面11111</el-tag>
+  <el-table
+    :data="tableData"
+    style="width: 100%">
+    <el-table-column
+      prop="date"
+      label="日期4"
+      width="180">
+      <template #default="scope">
+        {{ scope.row }}
+      </template>
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>
