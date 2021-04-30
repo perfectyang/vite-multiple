@@ -47,6 +47,7 @@
     "less": "^4.1.1",
     "less-loader": "^8.1.1",
     "lint-staged": "^10.5.4",
+    "pre-commit": "^1.2.2",
     "querystring": "^0.2.1",
     "vite": "^2.0.1",
     "vite-babel-plugin": "^0.0.2",
