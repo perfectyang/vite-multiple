@@ -78,7 +78,7 @@ export function compileScript (code, componentList) {
   })
   traverse(ast, {
     ExportDefaultDeclaration (path) {
-      const declaration = path.node.declaration
+      const {declaration} = path.node
       let obProperty
       if (declaration.type === 'ObjectExpression') {
         obProperty = declaration.properties

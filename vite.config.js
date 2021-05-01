@@ -1,20 +1,21 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vitePluginImport from 'vite-plugin-babel-import';
+import vitePluginImport from 'vite-plugin-babel-import'
 import mpa from 'vite-plugin-mpa'
 import viteESLint from '@ehutch79/vite-eslint'
 import vitePluginAutoInject from './plugins/vite-plugin-auto-inject/index.js'
+import { loadEnv } from './build/loadEnv'
 
-
-const baseUrl = {
-  development: './',
-  production: '//www.test.com/'
-}
-export default ({ mode }) =>  defineConfig({
+const {VITE_BASE_URL} = loadEnv()
+console.log(VITE_BASE_URL)
+// const baseUrl = {
+//   development: './',
+//   production: '//www.test.com/'
+// }
+export default (_) =>  defineConfig({
   open: false,
-  mode,
-  base: baseUrl[mode],
+  base: VITE_BASE_URL,
   build: {
     assetsDir: 'assets',
     manifest: false,

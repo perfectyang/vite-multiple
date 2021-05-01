@@ -1,19 +1,17 @@
 {
-  "name": "vue3-admin",
+  "name": "eztalk-backend",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --mode development",
-    "build": "vite build --mode production",
+    "dev": "cross-env NODE_ENV=dev vite --mode development",
+    "build": "cross-env vite build --mode production",
+    "build:dev": "cross-env NODE_ENV=development vite build --mode development",
+    "build:test": "cross-env NODE_ENV=test vite build --mode test",
     "serve": "vite preview"
-  },
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "src/**/*.js": [
-      "eslint --fix"
-    ]
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
     "element-plus": "^1.0.2-beta.33",
     "eslint-config-prettier": "^8.3.0",
     "eslint-define-config": "^1.0.8",
@@ -26,8 +24,7 @@
     "vue": "^3.0.5",
     "vue-i18n": "^9.1.4",
     "vue-router": "^4.0.4",
-    "vuex": "^4.0.0",
-    "wangeditor": "^4.6.10"
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",

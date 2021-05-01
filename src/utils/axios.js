@@ -10,11 +10,9 @@ const fetch = axios.create({
   // timeout: 20000,
   // withCredentials: true
 })
-const config = Object.assign({
-  headers: {
+const config = {headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
-  }
-})
+  }}
 fetch.interceptors.request.use(config => {
   const tokenId = JSON.parse(window.sessionStorage.getItem('user') || '{}').token_id || getQueryString('token_id') || ''
   if (Object.prototype.toString.call(config.data) === '[object FormData]') {
@@ -27,7 +25,7 @@ fetch.interceptors.request.use(config => {
       }
     })
     config.data.token_id = tokenId
-    const isObserver = location.href.includes('observer')
+    const isObserver = window.location.href.includes('observer')
     if (isObserver) {
       config.data.lang = getQueryString('lang')
     }
@@ -40,24 +38,19 @@ fetch.interceptors.request.use(config => {
   })
 
   return config
-}, (error) => {
-  return Promise.reject(error)
-})
-fetch.interceptors.response.use(response => {
-  return response
-}, (error) => {
-  let config = error.config
-  let data = {}
+}, (error) => Promise.reject(error))
+fetch.interceptors.response.use(response => response, (error) => {
+  const {config} = error
+  const data = {}
 
-  for (let [key, value] of config.data) {
+  for (const [key, value] of config.data) {
     data[key] = value
   }
   if (!axios.isCancel(error)) {
      /* eslint-disable no-new */
     return Promise.reject(error)
-  } else {
+  } 
     return new Promise(() => {})
-  }
 })
 
 const handlResult = (res, callback) => {
