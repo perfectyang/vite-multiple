@@ -1,20 +1,31 @@
 import { createI18n } from 'vue-i18n'
 import enLocale from 'element-plus/es/locale/lang/en'
 import zhLocale from 'element-plus/es/locale/lang/zh-cn'
+import gbLocale from 'element-plus/es/locale/lang/zh-tw'
 import { i18n as elI18n } from 'element-plus/es/locale'
+import zh from './config/zh'
+import gb from './config/gb'
+import en from './config/en'
+
+console.log('zh', zh)
+console.log('zh', en)
 
 export const localesConfigs = {
-  [enLocale.name]: {
-    el: enLocale.el,
-    首页: 'Home'
-  },
   [zhLocale.name]: {
     el: zhLocale.el,
-    首页: '首页'
+    ...zh
+  },
+  [gbLocale.name]: {
+    el: gbLocale.el,
+    ...gb
+  },
+  [enLocale.name]: {
+    el: enLocale.el,
+    ...en
   }
 }
 export const i18n = createI18n({
-  locale: 'zh-cn',
+  locale: 'zh-tw', // en zh-cn zh-tw
   fallbackLocale: enLocale.name,
   messages: localesConfigs
 })

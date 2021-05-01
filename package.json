@@ -8,18 +8,15 @@
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
-    "*.js": [
+    "src/**/*.js": [
       "eslint --fix"
-    ],
-    "*.ts?(x)": [
-      "eslint --fix",
-      "prettier --parser=typescript --write"
     ]
   },
   "dependencies": {
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.33",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-define-config": "^1.0.8",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-prettier": "^3.4.0",
     "js-md5": "^0.7.3",
@@ -29,6 +26,7 @@
     "vue": "^3.0.5",
     "vue-i18n": "^9.1.4",
     "vue-router": "^4.0.4",
+    "vuex": "^4.0.0",
     "wangeditor": "^4.6.10"
   },
   "devDependencies": {
@@ -47,7 +45,6 @@
     "element-theme-chalk": "^2.15.1",
     "eslint": "^7.25.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-define-config": "^1.0.8",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.9.0",
     "less": "^4.1.1",

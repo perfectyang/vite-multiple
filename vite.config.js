@@ -2,9 +2,9 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vitePluginImport from 'vite-plugin-babel-import';
-import vitePluginAutoInject from './plugins/vite-plugin-auto-inject/index.js'
 import mpa from 'vite-plugin-mpa'
 import viteESLint from '@ehutch79/vite-eslint'
+import vitePluginAutoInject from './plugins/vite-plugin-auto-inject/index.js'
 
 
 const baseUrl = {
@@ -47,7 +47,7 @@ export default ({ mode }) =>  defineConfig({
       {
           libraryName: 'element-plus',
           libraryDirectory: 'es',
-          style(name) {
+          style (name) {
               return `element-plus/lib/theme-chalk/${name}.css`;
           }
       }
@@ -55,8 +55,8 @@ export default ({ mode }) =>  defineConfig({
   ],
   optimizeDeps: {
     include: [
-      "element-plus/lib/locale/lang/zh-cn",
-      "element-plus/lib/locale/lang/en",
+      'element-plus/lib/locale/lang/zh-cn',
+      'element-plus/lib/locale/lang/en'
     ]
   },
   server: {

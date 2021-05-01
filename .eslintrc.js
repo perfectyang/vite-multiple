@@ -12,7 +12,7 @@ module.exports = defineConfig({
     ecmaVersion: 2020,
     sourceType: 'module'
   },
-  extends: ['plugin:vue/vue3-strongly-recommended', 'airbnb-base', 'prettier'],
+  extends: ['airbnb-base', 'plugin:vue/vue3-strongly-recommended',  'prettier'],
   rules: {
     'no-unused-vars': [
       'error',
@@ -41,7 +41,9 @@ module.exports = defineConfig({
     'comma-dangle': ['error', 'never'],
     'linebreak-style': 'off',
     'no-return-assign': 'off',
-    'no-console': 'off'
+    'no-console': 'off',
+    'no-shadow': 'off',
+    'no-param-reassign': ['error', { 'props': false }]
   },
   settings: {
     'import/resolver': {

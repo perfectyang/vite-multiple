@@ -3,17 +3,22 @@
     <div class="layout__content">
       {{ state.count }}
       {{ val }}
+      {{userInfo.user}}
     </div>
   </div>
   <button @click="add">add</button>
 </template>
 
 <script>
-import { reactive, computed } from 'vue'
+import { reactive, computed  } from 'vue'
+import {useStore} from 'vuex'
 
 export default {
   components: {},
   setup () {
+    const store = useStore()
+    const userInfo = computed(() => store.state.userInfo)
+
     const state = reactive({
       count: 1
     })
@@ -24,11 +29,13 @@ export default {
     })
     const add = () => {
       state.count += 1
+      store.dispatch('updateUser', {user: 'perfectyang'})
     }
     return {
       state,
       val,
-      add
+      add,
+      userInfo
     }
   }
 }
