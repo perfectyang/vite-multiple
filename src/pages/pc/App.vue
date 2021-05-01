@@ -10,8 +10,7 @@
 import { reactive } from 'vue'
 
 export default {
-  components: {
-  },
+  components: {},
   setup () {
     const state = reactive({
       count: 1

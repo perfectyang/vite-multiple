@@ -1,12 +1,9 @@
 <template>
-<div>test-common</div>
+  <div>test-common</div>
 </template>
 
 <script>
-export default {
-}
+export default {}
 </script>
 
-<style  scoped>
-
-</style>
+<style scoped></style>

@@ -5,12 +5,12 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/home',
+      redirect: '/home'
     },
     {
       path: '/home',
       name: 'home',
-      component: () => import(/* webpackChunkName: "introduce" */ '../views/home.vue'),
+      component: () => import(/* webpackChunkName: "introduce" */ '../views/home.vue')
     },
     // {
     //   path: '/dashboard',
@@ -20,8 +20,8 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
-    },
+      component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    }
     // {
     //   path: '/add',
     //   name: 'add',

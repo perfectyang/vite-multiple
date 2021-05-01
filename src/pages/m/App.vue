@@ -9,12 +9,13 @@
 import { reactive } from 'vue'
 // import { useRouter } from 'vue-router'
 import test from '@/component/test.vue'
+
 export default {
   name: 'App',
   components: {
     test
   },
-  setup() {
+  setup () {
     const state = reactive({
       count: 1
     })

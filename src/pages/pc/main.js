@@ -7,5 +7,4 @@ import '@/assets/public.less'
 const app = createApp(App)
 initI18n(app)
 app.use(router)
-
 app.mount('#app')
