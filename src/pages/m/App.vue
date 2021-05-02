@@ -1,6 +1,6 @@
 <template>
   <div class="m">
-    <test />
+    <test :name="1" :age="1" />
     <router-view />
   </div>
 </template>
