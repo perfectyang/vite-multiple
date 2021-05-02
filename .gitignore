@@ -21,16 +21,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
 ### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/

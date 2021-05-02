@@ -13,7 +13,6 @@ export default {
   setup () {
     const state = reactive({
       count: 1
-      // name: 'a'
     })
     return {
       state
