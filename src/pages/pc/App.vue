@@ -12,8 +12,8 @@ export default {
   components: {},
   setup () {
     const state = reactive({
-      count: 1,
-      name: 'a'
+      count: 1
+      // name: 'a'
     })
     return {
       state
