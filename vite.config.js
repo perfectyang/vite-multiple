@@ -8,11 +8,6 @@ import vitePluginAutoInject from './plugins/vite-plugin-auto-inject/index.js'
 import { loadEnv } from './build/loadEnv'
 
 const {VITE_BASE_URL} = loadEnv()
-console.log(VITE_BASE_URL)
-// const baseUrl = {
-//   development: './',
-//   production: '//www.test.com/'
-// }
 export default (_) =>  defineConfig({
   open: false,
   base: VITE_BASE_URL,

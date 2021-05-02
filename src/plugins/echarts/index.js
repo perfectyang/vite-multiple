@@ -1,7 +1,7 @@
 // import echarts from "/@/plugins/echarts";
-import * as echarts from "echarts/core";
+import * as echarts from 'echarts/core'
 
-import { LineChart } from "echarts/charts";
+import { LineChart } from 'echarts/charts'
 
 import {
   TitleComponent,
@@ -9,12 +9,15 @@ import {
   GridComponent,
   ToolboxComponent,
   DataZoomComponent,
-  VisualMapComponent,
-} from "echarts/components";
+  VisualMapComponent
+} from 'echarts/components'
 
-import { SVGRenderer } from "echarts/renderers";
+import { SVGRenderer } from 'echarts/renderers'
 
-const { use, registerTheme } = echarts;
+// 自定义主题
+import theme from './theme.json'
+
+const { use, registerTheme } = echarts
 
 use([
   TitleComponent,
@@ -24,12 +27,10 @@ use([
   SVGRenderer,
   ToolboxComponent,
   DataZoomComponent,
-  VisualMapComponent,
-]);
+  VisualMapComponent
+])
 
-// 自定义主题
-import theme from "./theme.json";
-registerTheme("ovilia-green", theme);
+registerTheme('ovilia-green', theme)
 
 
-export default echarts;
+export default echarts

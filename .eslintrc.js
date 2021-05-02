@@ -12,7 +12,7 @@ module.exports = defineConfig({
     ecmaVersion: 2020,
     sourceType: 'module'
   },
-  extends: ['airbnb-base', 'plugin:vue/vue3-strongly-recommended',  'prettier'],
+  extends: ['airbnb-base', 'plugin:vue/vue3-essential',  'prettier'],
   rules: {
     'no-unused-vars': [
       'error',
@@ -37,7 +37,7 @@ module.exports = defineConfig({
     'vue/require-default-prop': 'off',
     'vue/html-self-closing': 'off',
     'vue/max-attributes-per-line': 'off',
-    semi: 0,
+    semi: [1, 'never'],
     'comma-dangle': ['error', 'never'],
     'linebreak-style': 'off',
     'no-return-assign': 'off',
