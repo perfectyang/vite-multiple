@@ -218,15 +218,7 @@
     "@babel/helper-validator-option" "^7.12.17"
     "@babel/plugin-transform-typescript" "^7.13.0"
 
-"@babel/runtime-corejs3@^7.11.2":
-  version "7.13.17"
-  resolved "http://npm.kuaizitech.cn/@babel%2fruntime-corejs3/-/runtime-corejs3-7.13.17.tgz"
-  integrity sha1-m69F8D1NAT8CF2C5ktY0mp0n3q8=
-  dependencies:
-    core-js-pure "^3.0.0"
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.8":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.8":
   version "7.13.17"
   resolved "http://npm.kuaizitech.cn/@babel%2fruntime/-/runtime-7.13.17.tgz"
   integrity sha1-iWbR/JWTv4SGAvBmLWtNAGnjp+w=
@@ -1327,11 +1319,6 @@ copy-anything@^2.0.1:
   integrity sha1-hCQHugJGaw34RIGbvjuuu+XUXYc=
   dependencies:
     is-what "^3.12.0"
-
-core-js-pure@^3.0.0:
-  version "3.11.0"
-  resolved "http://npm.kuaizitech.cn/core-js-pure/-/core-js-pure-3.11.0.tgz"
-  integrity sha1-4H8lqPYW0XjsFrA1SwCK0osgsvA=
 
 core-util-is@~1.0.0:
   version "1.0.2"
@@ -4137,7 +4124,7 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "http://npm.kuaizitech.cn/tslib/-/tslib-1.14.1.tgz"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2.0.3, tslib@^2.1.0:
+tslib@^2.0.3:
   version "2.2.0"
   resolved "http://npm.kuaizitech.cn/tslib/-/tslib-2.2.0.tgz"
   integrity sha1-+yxHWXfjXiQTEe3iaTzuHsZpj1w=
@@ -4426,15 +4413,6 @@ vuex@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-4.0.0.tgz#ac877aa76a9c45368c979471e461b520d38e6cf5"
   integrity sha512-56VPujlHscP5q/e7Jlpqc40sja4vOhC4uJD1llBCWolVI8ND4+VzisDVkUMl+z5y0MpIImW6HjhNc+ZvuizgOw==
-
-wangeditor@^4.6.10:
-  version "4.6.16"
-  resolved "http://npm.kuaizitech.cn/wangeditor/-/wangeditor-4.6.16.tgz"
-  integrity sha1-UiAdFVqw29lfNnFEkPcEFSjx8iU=
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@babel/runtime-corejs3" "^7.11.2"
-    tslib "^2.1.0"
 
 wcwidth@^1.0.1:
   version "1.0.1"
